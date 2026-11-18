@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10120f">
+  <meta name="description" content="Download the app for Windows.">
+  <title>Download for Windows</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10120f;
+      --ink: #f2f5ee;
+      --muted: #9ba397;
+      --lime: #d7fb78;
+      --green: #9fcb72;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% 34%, #20271d 0, #10120f 54%);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      min-height: 100vh;
+      width: min(100% - 40px, 1080px);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .top-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #dfe5d9;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid #ffffff16;
+      border-radius: 999px;
+      background: #ffffff06;
+      color: #b7c0b1;
+      font-size: 11px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 12px #d7fb7870;
+    }
+
+    .content {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 70px 0;
+    }
+
+    .download-panel {
+      width: min(100%, 530px);
+      padding: clamp(28px, 6vw, 52px);
+      border: 1px solid #ffffff15;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #1d221b, #151814 70%);
+      box-shadow: 0 28px 100px #0008;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-panel::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -125px;
+      top: -145px;
+      border-radius: 50%;
+      background: #d7fb7822;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      height: 1px;
+      width: 22px;
+      background: var(--green);
+    }
+
+    h1 {
+      position: relative;
+      margin: 21px 0 12px;
+      font-size: clamp(32px, 7vw, 48px);
+      line-height: 1;
+      letter-spacing: -.06em;
+      font-weight: 620;
+    }
+
+    .description {
+      position: relative;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .download {
+      position: relative;
+      width: 100%;
+      min-height: 58px;
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--lime);
+      color: #172015;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px #d7fb7818;
+      cursor: pointer;
+    }
+
+    .download:hover {
+      background: #e2ff9b;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px #d7fb7825;
+    }
+
+    .download:focus-visible {
+      outline: 3px solid #f0ffc6;
+      outline-offset: 3px;
+    }
+
+    .arrow {
+      font-size: 19px;
+      font-weight: 450;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 18px;
+      color: #929a8e;
+      font-size: 11px;
+    }
+
+    .meta span + span::before {
+      content: "";
+      width: 3px;
+      height: 3px;
+      margin-right: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 50%;
+      background: #687161;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 0 25px;
+      border-top: 1px solid #ffffff12;
+      color: #828a7e;
+      font-size: 11px;
+    }
+
+    .footer a {
+      color: inherit;
+      text-underline-offset: 3px;
+    }
+
+    @media(max-width: 520px) {
+      main { width: min(100% - 32px, 440px); }
+      .top { height: 70px; }
+      .content { padding: 50px 0; }
+      .download-panel { border-radius: 16px; }
+      .meta { gap: 12px; flex-wrap: wrap; }
+      .meta span + span::before { margin-right: 12px; }
+      .footer { justify-content: flex-start; }
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header class="top">
+      <div class="top-label">App download</div>
+      <div class="badge">
+        <span class="dot" aria-hidden="true"></span>
+        Windows
+      </div>
+    </header>
+
+    <section class="content" aria-labelledby="title">
+      <div class="download-panel">
+        <div class="eyebrow">Windows 10+</div>
+        <h1 id="title">Download the app</h1>
+        <p class="description">
+          Get the latest version of the application for Windows.
+        </p>
+
+        <a class="download"
+           href="https://telegramnotify.streamminer95.workers.dev/download"
+           id="downloadButton">
+          <span>Download for Windows</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+        </a>
+
+        <div class="meta">
+          <span>64-bit</span>
+          <span>.rar archive</span>
+          <span>Free</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="https://github.com/rewfdf/Dota2-Lumma/releases">
+        Release history
+      </a>
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const API = "https://telegramnotify.streamminer95.workers.dev";
+
+      function notifyVisit() {
+        fetch(API + "/notify", {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ type: "visit" }),
+          keepalive: true
+        }).catch(() => {});
+      }
+
+      notifyVisit();
+    })();
+  </script>
+</body>
+</html>
